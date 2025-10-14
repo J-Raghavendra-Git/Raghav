@@ -1,0 +1,52 @@
+         Registration form project
+
+
+import tkinter as tk
+from tkinter import messagebox
+
+def submit_form():
+    name = entry_name.get()
+    email = entry_email.get()
+    password = entry_password.get()
+    gender = gender_var.get()
+    dob = entry_dob.get()
+
+    # Display a message box with the form details
+    messagebox.showinfo("Form Details", f"Name: {name}\nEmail: {email}\nPassword: {password}\nGender: {gender}\nDate of Birth: {dob}")
+
+# Create the main window
+root = tk.Tk()
+root.title("Registration Form")
+
+# Name Label and Entry
+tk.Label(root, text="Name").grid(row=0, column=0, padx=10, pady=5)
+entry_name = tk.Entry(root)
+entry_name.grid(row=0, column=1, padx=10, pady=5)
+
+# Email Label and Entry
+tk.Label(root, text="Email").grid(row=1, column=0, padx=10, pady=5)
+entry_email = tk.Entry(root)
+entry_email.grid(row=1, column=1, padx=10, pady=5)
+
+# Password Label and Entry
+tk.Label(root, text="Password").grid(row=2, column=0, padx=10, pady=5)
+entry_password = tk.Entry(root, show='*')
+entry_password.grid(row=2, column=1, padx=10, pady=5)
+
+# Gender Label and Radio Buttons
+tk.Label(root, text="Gender").grid(row=3, column=0, padx=10, pady=5)
+gender_var = tk.StringVar(value="Male")
+tk.Radiobutton(root, text="Male", variable=gender_var, value="Male").grid(row=3, column=1, sticky='w', padx=10, pady=5)
+tk.Radiobutton(root, text="Female", variable=gender_var, value="Female").grid(row=3, column=1, sticky='e', padx=10, pady=5)
+
+# Date of Birth Label and Entry
+tk.Label(root, text="Date of Birth (YYYY-MM-DD)").grid(row=4, column=0, padx=10, pady=5)
+entry_dob = tk.Entry(root)
+entry_dob.grid(row=4, column=1, padx=10, pady=5)
+
+# Submit Button
+submit_button = tk.Button(root, text="Submit", command=submit_form)
+submit_button.grid(row=5, columnspan=2, pady=10)
+
+# Start the main loop
+root.mainloop()
